@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Repository Details View Controller-->
+        <scene sceneID="qYl-QX-6K0">
+            <objects>
+                <viewController storyboardIdentifier="RepositoryDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3gB-Pp-9Iu" customClass="RepositoryDetailsViewController" customModule="Boosters_iOS_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BVD-hC-kOv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eB6-eN-Chy">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ker-0W-sxe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c3a-ef-UFD"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ker-0W-sxe" secondAttribute="trailing" id="3mg-CR-I06"/>
+                            <constraint firstItem="ker-0W-sxe" firstAttribute="top" secondItem="BVD-hC-kOv" secondAttribute="top" id="ZnG-q2-V1B"/>
+                            <constraint firstItem="ker-0W-sxe" firstAttribute="leading" secondItem="BVD-hC-kOv" secondAttribute="leading" id="btP-2X-Mmh"/>
+                            <constraint firstItem="c3a-ef-UFD" firstAttribute="trailing" secondItem="eB6-eN-Chy" secondAttribute="trailing" id="gOF-V7-Q92"/>
+                            <constraint firstItem="eB6-eN-Chy" firstAttribute="leading" secondItem="c3a-ef-UFD" secondAttribute="leading" id="jsF-Pd-n4y"/>
+                            <constraint firstItem="eB6-eN-Chy" firstAttribute="top" secondItem="ker-0W-sxe" secondAttribute="bottom" id="nr0-hv-YO9"/>
+                            <constraint firstItem="c3a-ef-UFD" firstAttribute="bottom" secondItem="eB6-eN-Chy" secondAttribute="bottom" id="qqa-X5-OaT"/>
+                            <constraint firstItem="eB6-eN-Chy" firstAttribute="top" secondItem="c3a-ef-UFD" secondAttribute="top" id="wKg-l5-tuG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="eB6-eN-Chy" id="B9G-Zi-cav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EY5-Ab-mlZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="154"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

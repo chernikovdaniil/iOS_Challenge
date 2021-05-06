@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.4.1)
+  - SwiftyRedux (0.3.0):
+    - SwiftyRedux/BatchedActions (= 0.3.0)
+    - SwiftyRedux/Command (= 0.3.0)
+    - SwiftyRedux/Core (= 0.3.0)
+    - SwiftyRedux/SideEffects (= 0.3.0)
+    - SwiftyRedux/Steroids (= 0.3.0)
+  - SwiftyRedux/BatchedActions (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Command (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Core (0.3.0)
+  - SwiftyRedux/SideEffects (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Steroids (0.3.0):
+    - SwiftyRedux/Core
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - SwiftyRedux (~> 0.3.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SwiftyRedux
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  SwiftyRedux: 139404e6f214348762ac9e76c5ea9da349374da4
+
+PODFILE CHECKSUM: 351123c962aaf8673313de88bd48a6d41cb1bd67
+
+COCOAPODS: 1.10.1
