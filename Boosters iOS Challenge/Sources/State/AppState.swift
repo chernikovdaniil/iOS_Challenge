@@ -5,7 +5,6 @@
 //  Created by Danil Chernikov on 06.05.2021.
 //
 
-
 struct AppState: StateType {
     var loadedRepositories: [Repository] = []
     

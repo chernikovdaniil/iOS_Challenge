@@ -16,7 +16,6 @@ class RepositoriesViewController: UIViewController {
     
     private var props: Props = .initial
     private var repositories: [Repository] = []
-    private var gitHubService = GitHubService()
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -56,7 +55,7 @@ class RepositoriesViewController: UIViewController {
 extension RepositoriesViewController {
     func getRepositories() {
         StoreLocator.shared.dispatch(AppStateAction.loadingRepositories)
-        gitHubService.downloadRepositories {
+        GitHubService.shared.getRepositories {
             switch $0 {
             case .success(let repositories):
                 StoreLocator.shared.dispatch(AppStateAction.loadedRepositories(repositories))

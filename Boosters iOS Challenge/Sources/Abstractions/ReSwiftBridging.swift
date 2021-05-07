@@ -1,5 +1,5 @@
 //
-//  SwiftyReduxBridging.swift
+//  ReSwiftBridging.swift
 //  Boosters iOS Challenge
 //
 //  Created by Danil Chernikov on 06.05.2021.
