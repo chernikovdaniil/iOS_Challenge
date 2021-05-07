@@ -6,7 +6,7 @@ target 'Boosters iOS Challenge' do
   use_frameworks!
 
 
-  pod 'SwiftyRedux', '~> 0.3.0'
-  pod 'Alamofire', '~> 5.2'
+  pod 'ReSwift'
+  pod 'Alamofire' , ' ~> 4.9.1'
 
 end

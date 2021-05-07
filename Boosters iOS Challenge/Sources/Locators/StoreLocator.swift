@@ -5,6 +5,8 @@
 //  Created by Danil Chernikov on 06.05.2021.
 //
 
+import ReSwift
+
 enum StoreLocator {
     private static var instance: Store<AppState>?
     

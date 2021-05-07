@@ -1,3 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Boosters iOS Challenge/Pods-Boosters iOS Challenge-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/SwiftyRedux/SwiftyRedux.framework
+${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework
