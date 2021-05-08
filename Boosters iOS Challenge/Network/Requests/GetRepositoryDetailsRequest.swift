@@ -9,13 +9,14 @@ import Foundation
 import Alamofire
 
 class GetRepositoryDetailsRequest {
-    
-    init() {}
-    
     func downloadDetails(by repository: String,
                          completion: @escaping (RequestResult<Repository>) -> Void) {
         guard let urlRequest = try? GitHubRouter
-                .getDetailsAt(repositoryName: repository).asURLRequest() else { return }
+                .getDetailsAt(repositoryName: repository).asURLRequest() else {
+            completion(.error(AppError.somethingWentWrong))
+            return
+        }
+        
         Request.sendRequest(urlRequest, responseModel: Repository.self, completion: completion)
     }
 }

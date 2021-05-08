@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReSwift
 
 class RepositoryDetailsViewController: UIViewController {
     struct Props {
@@ -19,9 +20,11 @@ class RepositoryDetailsViewController: UIViewController {
     
     private var props: Props = .initial
     
+    var store: Store<AppState>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        StoreLocator.shared.subscribe(self) {
+        self.store?.subscribe(self) {
             $0.select(RepositoryDetailsViewState.init)
         }
         
@@ -30,7 +33,7 @@ class RepositoryDetailsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        StoreLocator.shared.unsubscribe(self)
+        self.store?.unsubscribe(self)
     }
     
     private func setupUI() {
@@ -86,6 +89,14 @@ extension RepositoryDetailsViewController: StoreSubsriber {
     typealias StoreSubscriberStateType = RepositoryDetailsViewState
     
     func newState(state: RepositoryDetailsViewState) {
+        
+        switch state.state {
+        case .loading:
+            self.showActivityIndicator()
+        case .loaded:
+            self.hideActivityIndicator()
+        }
+        
         self.render(state.props)
     }
 }

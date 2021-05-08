@@ -10,19 +10,25 @@ import Foundation
 struct RepositoryDetailsViewState: StateType {
     var repository: Repository
     var props: RepositoryDetailsViewController.Props
+    var state: State; enum State {
+        case loading
+        case loaded
+    }
     
     init(_ state: AppState) {
         switch state.repositoriesDetail {
-        case .initial:
+        case .initial, .show:
             self.repository = .initial
             self.props = .initial
-        case .show(let repository):
+            self.state = .loading
+        case .loadedDetails(let repository):
             self.repository = repository
             let header = getHeader(by: repository)
             let items = getItems(by: repository)
             
             self.props = .init(header: header,
                                items: items)
+            self.state = .loaded
         }
     }
 }

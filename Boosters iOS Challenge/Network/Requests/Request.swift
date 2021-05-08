@@ -17,6 +17,10 @@ class Request {
     static func sendRequest<T: Decodable>(_ urlRequest: URLRequest,
                                responseModel: T.Type,
                                completion: @escaping (RequestResult<T>) -> Void) {
+        #if DEBUG
+        print("➡️ Request sent - \(urlRequest.url?.absoluteString ?? "")")
+        #endif
+        
         Alamofire.request(urlRequest).responseJSON {
             switch $0.result {
             case .success(let response):

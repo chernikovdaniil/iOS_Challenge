@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReSwift
 
 class RepositoriesViewController: UIViewController {
     struct Props {
@@ -15,27 +16,25 @@ class RepositoriesViewController: UIViewController {
     }
     
     private var props: Props = .initial
-    private var repositories: [Repository] = []
+    
+    var store: Store<AppState>?
+    var coordinator: RepositoriesCoordinatorType?
     
     @IBOutlet private weak var tableView: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        StoreLocator.shared.subscribe(self) {
+        self.store?.subscribe(self) {
             $0.select(RepositoriesViewState.init)
         }
         
         setupUI()
         
-        self.getRepositories()
+        self.store?.dispatch(LoadingRepositoriesAction())
     }
     
     deinit {
-        StoreLocator.shared.unsubscribe(self)
+        self.store?.unsubscribe(self)
     }
     
     private func setupUI() {
@@ -52,26 +51,12 @@ class RepositoriesViewController: UIViewController {
     }
 }
 
-extension RepositoriesViewController {
-    func getRepositories() {
-        StoreLocator.shared.dispatch(AppStateAction.loadingRepositories)
-        GitHubService.shared.getRepositories {
-            switch $0 {
-            case .success(let repositories):
-                StoreLocator.shared.dispatch(AppStateAction.loadedRepositories(repositories))
-            case .error(let error):
-                print("\(#function) \n Error - \(error.localizedDescription)")
-            }
-        }
-    }
-}
-
 extension RepositoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedRepo = self.repositories[indexPath.row]
-        StoreLocator.shared.dispatch(AppStateAction.showRepositoryDetail(selectedRepo))
+        guard let selectedRepo = self.store?.state.loadedRepositories[indexPath.row] else { return }
+        StoreLocator.shared.dispatch(ShowRepositoryDetailAction(repository: selectedRepo))
         
-        self.showRepositoryDetailsScreen()
+        self.coordinator?.showRepositoryDetail()
     }
     
     private func showRepositoryDetailsScreen() {
@@ -96,8 +81,6 @@ extension RepositoriesViewController: StoreSubsriber {
     typealias StoreSubscriberStateType = RepositoriesViewState
     
     func newState(state: RepositoriesViewState) {
-        self.repositories = state.repositories
-        
         switch state.state {
         case .loading:
             self.showActivityIndicator()

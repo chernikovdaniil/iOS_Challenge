@@ -27,8 +27,8 @@ class AppCoordinator: NSObject {
     }
     
     func showRepositoriesScreen() {
-        let controller: RepositoriesViewController = Storyboard.repositories.instantiate()
-        self.navigationController.setNavigationBarHidden(false, animated: false)
-        self.navigationController.setViewControllers([controller], animated: true)
+        let coordinator = RepositoriesCoordinator(navigationController: navigationController,
+                                                  store: store)
+        coordinator.start()
     }
 }

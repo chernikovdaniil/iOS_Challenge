@@ -20,7 +20,8 @@ enum RepositoriesState: Equatable {
 
 enum RepositoryDetailsState: Equatable {
     case initial
-    case show(Repository)
+    case show
+    case loadedDetails(Repository)
 }
 
 extension AppState: Equatable {
@@ -34,16 +35,18 @@ extension AppState: Equatable {
 func reduce(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
     
-    guard let action = action as? AppStateAction else { return state }
-    
     switch action {
-    case .loadingRepositories:
+    case is LoadingRepositoriesAction:
         state.repositories = .loading
-    case .loadedRepositories(let repositories):
-        state.loadedRepositories = repositories
-        state.repositories = .loaded(repositories)
-    case .showRepositoryDetail(let repository):
-        state.repositoriesDetail = .show(repository)
+    case let action as LoadedRepositoriesAction:
+        state.loadedRepositories = action.repositories
+        state.repositories = .loaded(action.repositories)
+    case is ShowRepositoryDetailAction:
+        state.repositoriesDetail = .show
+    case let action as LoadedRepositoryDetailsAction:
+        state.repositoriesDetail = .loadedDetails(action.repository)
+    default:
+        break
     }
     
     return state

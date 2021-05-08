@@ -10,7 +10,11 @@ import Alamofire
 
 class GetRepositoriesRequest {
     func downloadRepositories(completion: @escaping (RequestResult<[Repository]>) -> Void) {
-        guard let urlRequest = try? GitHubRouter.getRepositories.asURLRequest() else { return }
+        guard let urlRequest = try? GitHubRouter.getRepositories.asURLRequest() else {
+            completion(.error(AppError.somethingWentWrong))
+            return
+        }
+        
         Request.sendRequest(urlRequest,
                             responseModel: [Repository].self,
                             completion: completion)

@@ -7,9 +7,59 @@
 
 import ReSwift
 
-enum AppStateAction: Action {
-    case loadingRepositories
-    case loadedRepositories([Repository])
+struct LoadingRepositoriesAction: Action {
+    init() {
+        GitHubService.shared.getRepositories {
+            switch $0 {
+            case .success(let model):
+                StoreLocator.shared.dispatch(LoadedRepositoriesAction(repositories: model))
+            case .error(let error):
+                StoreLocator.shared.dispatch(ActionFail(error: error))
+            }
+        }
+    }
+}
+
+struct LoadedRepositoriesAction: Action {
+    let repositories: [Repository]
+}
+
+struct ShowRepositoryDetailAction: Action {
+    init(repository: Repository) {
+        GitHubService.shared.getRepositoryDetails(by: repository.name ?? "") {
+            switch $0 {
+            case .success(let model):
+                StoreLocator.shared.dispatch(LoadedRepositoryDetailsAction(repository: model))
+            case .error(let error):
+                StoreLocator.shared.dispatch(ActionFail(error: error))
+            }
+        }
+    }
+}
+
+struct LoadedRepositoryDetailsAction: Action {
+    let repository: Repository
+}
+
+struct ActionFail: Action {
+    let error: Error
+}
+
+struct AppError: Error {
+    let title: String
+    let message: String
     
-    case showRepositoryDetail(Repository)
+    init(_ title: String, _ message: String) {
+        self.title = title
+        self.message = message
+    }
+    
+    var errorDescription: String? {
+        return "\(title) \n \(message)"
+    }
+}
+
+extension AppError {
+    static let somethingWentWrong = AppError("Oops...",
+                                             "Something went wrong.")
 }

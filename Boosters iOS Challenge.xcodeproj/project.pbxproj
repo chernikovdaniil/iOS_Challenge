@@ -11,6 +11,8 @@
 		3963043E26454D690080154B /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3963043D26454D690080154B /* AlertHelper.swift */; };
 		39630444264560130080154B /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39630443264560130080154B /* AppStateAction.swift */; };
 		39630447264571240080154B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39630446264571240080154B /* UIViewController.swift */; };
+		397EE74826465546004765FF /* RepositoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397EE74726465546004765FF /* RepositoriesCoordinator.swift */; };
+		397EE74C26465A9E004765FF /* RepositoryDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397EE74B26465A9E004765FF /* RepositoryDetailsCoordinator.swift */; };
 		3995422B26453700007CDE33 /* ReSwiftBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3995422A26453700007CDE33 /* ReSwiftBridging.swift */; };
 		39D4CF6826459631000EA3C0 /* GetRepositoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4CF6726459631000EA3C0 /* GetRepositoriesRequest.swift */; };
 		39D4CF74264597AD000EA3C0 /* GetRepositoryDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4CF73264597AD000EA3C0 /* GetRepositoryDetailsRequest.swift */; };
@@ -51,6 +53,8 @@
 		3963043D26454D690080154B /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		39630443264560130080154B /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
 		39630446264571240080154B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		397EE74726465546004765FF /* RepositoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesCoordinator.swift; sourceTree = "<group>"; };
+		397EE74B26465A9E004765FF /* RepositoryDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsCoordinator.swift; sourceTree = "<group>"; };
 		3995422A26453700007CDE33 /* ReSwiftBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReSwiftBridging.swift; sourceTree = "<group>"; };
 		39D4CF6726459631000EA3C0 /* GetRepositoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepositoriesRequest.swift; sourceTree = "<group>"; };
 		39D4CF73264597AD000EA3C0 /* GetRepositoryDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepositoryDetailsRequest.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 		39D8E41826440A1E00012457 /* RepositoriesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				397EE74726465546004765FF /* RepositoriesCoordinator.swift */,
 				39D8E41A26440A3F00012457 /* RepositoriesViewController.swift */,
 				39D8E42126440FB700012457 /* Repositories.storyboard */,
 			);
@@ -319,6 +324,7 @@
 		39D8E424264415B100012457 /* RepositoryDetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				397EE74B26465A9E004765FF /* RepositoryDetailsCoordinator.swift */,
 				39D8E425264415D300012457 /* RepositoryDetailsViewController.swift */,
 				39D8E42C2644163C00012457 /* RepositoryDetails.storyboard */,
 			);
@@ -487,6 +493,7 @@
 				39D8E3B12643D7D400012457 /* AppCoordinator.swift in Sources */,
 				39D8E43826441D0A00012457 /* RepositoryDetailsSection.swift in Sources */,
 				39D8E45426443B4F00012457 /* UIStoryboard.swift in Sources */,
+				397EE74C26465A9E004765FF /* RepositoryDetailsCoordinator.swift in Sources */,
 				39D8E43D26441F2F00012457 /* RepositoryDetailsCell.swift in Sources */,
 				39D4CF6826459631000EA3C0 /* GetRepositoriesRequest.swift in Sources */,
 				39630447264571240080154B /* UIViewController.swift in Sources */,
@@ -509,6 +516,7 @@
 				39D4CF74264597AD000EA3C0 /* GetRepositoryDetailsRequest.swift in Sources */,
 				39D8E3B72643D8B800012457 /* Repository.swift in Sources */,
 				39D8E41B26440A3F00012457 /* RepositoriesViewController.swift in Sources */,
+				397EE74826465546004765FF /* RepositoriesCoordinator.swift in Sources */,
 				39D4CF7F26459A1B000EA3C0 /* Request.swift in Sources */,
 				39D4CF7A2645985B000EA3C0 /* GitHubService.swift in Sources */,
 				39D8E3BC2643E19800012457 /* RepositoryOwner.swift in Sources */,
